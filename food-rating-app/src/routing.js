@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Contact from "./pages/contact";
 import Terms from "./pages/terms";
 import Home from "./pages/home";
-import Ratings from "./pages/ratings";
+import OverView from "./pages/overView";
+import LoginForm from "./components/loginForm";
+import RegisterForm from "./components/registerForm";
 
 const Routing = () => {
   return (
@@ -12,7 +14,9 @@ const Routing = () => {
         <Route exact path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/terms" element={<Terms />} />
-        <Route path="/ratings/:id" element={<Ratings />} />
+        <Route path="/overview/:id" element={<OverView />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/register" element={<RegisterForm />} />
       </Routes>
     </Router>
   );

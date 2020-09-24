@@ -1,8 +1,12 @@
 import axios from "axios";
 
-const url = "http://localhost:3001/";
+const url = "http://localhost:3001";
 
-export const get = async () => {
-  const rests = await axios.get(url);
-  return rests;
+export const register = (user) => {
+  const apiEndpoint = url + "/users";
+  axios.post(apiEndpoint, {
+    name: user.name,
+    email: user.email,
+    password: user.password,
+  });
 };

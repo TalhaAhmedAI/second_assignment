@@ -11,6 +11,8 @@ const NavBar = ({ location }) => {
         <Nav.Link href="/">Home</Nav.Link>
         <Nav.Link href="/contact">Contact Us</Nav.Link>
         <Nav.Link href="/terms">Terms & Conditions</Nav.Link>
+        <Nav.Link href="/login">Login</Nav.Link>
+        <Nav.Link href="/register">Register</Nav.Link>
       </Nav>
       <Nav className="navbar-right" style={{ color: "white" }}>
         {location}

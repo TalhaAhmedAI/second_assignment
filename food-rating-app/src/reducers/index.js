@@ -14,7 +14,15 @@ const fetchRestsReducer = (response = null, action) => {
   return response;
 };
 
+const selectRestReducer = (rest = null, action) => {
+  if (action.type === "SELECT_REST") {
+    return action.payload;
+  }
+  return rest;
+};
+
 export default combineReducers({
   location: submitLocationReducer,
   rests: fetchRestsReducer,
+  rest: selectRestReducer,
 });

@@ -6,14 +6,20 @@ import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 
 import Hotel from "./hotel";
+import { selectRest } from "../actions/index";
 
-const Cards = ({ rests }) => {
+const Cards = (props) => {
   const [hotels, setHotels] = useState([]);
   useEffect(() => {
-    if (rests) {
-      setHotels(rests.data);
+    if (props.rests) {
+      setHotels(props.rests.data);
     }
-  }, [hotels, rests]);
+  }, [hotels, props.rests]);
+  console.log(hotels);
+
+  // const handleSelect = (hotel) => {
+  //   props.selectRest(hotel);
+  // };
 
   return (
     <Container>
@@ -21,7 +27,10 @@ const Cards = ({ rests }) => {
         {hotels !== [] ? (
           hotels.map((hotel, index) => (
             <Col key={index} sm={12} md={6} lg={4}>
-              <Link to={`/ratings/${index}`}>
+              <Link
+                onClick={() => props.selectRest(hotel)}
+                to={`/overview/${index}`}
+              >
                 <Hotel hotel={hotel} />
               </Link>
             </Col>
@@ -38,4 +47,4 @@ const mapStateToProps = (state) => {
   return { rests: state.rests };
 };
 
-export default connect(mapStateToProps)(Cards);
+export default connect(mapStateToProps, { selectRest })(Cards);

@@ -19,7 +19,17 @@ app.get("/", async (req, res, next) => {
     const rests = await db.Model.find({});
     return success(res, rests);
   } catch (err) {
-    next({ status: 400, message: "failed to get todos" });
+    next({ status: 400, message: "failed to get rests" });
+  }
+});
+
+app.post("/users", async (req, res, next) => {
+  try {
+    console.log("post is called");
+    const user = await db.create(req.body);
+    return success(res, user);
+  } catch (err) {
+    next({ status: 400, message: "failed to create user" });
   }
 });
 

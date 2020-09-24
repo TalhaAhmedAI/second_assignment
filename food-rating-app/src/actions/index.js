@@ -14,6 +14,9 @@ export const fetchRests = () => async (dispatch) => {
   dispatch({ type: "FETCH_RESTS", payload: response });
 };
 
-export const submitRating = (id, rating) => async (dispatch) => {
-  dispatch({ type: "SUBMIT_RATING", payload: rating });
+export const selectRest = (rest) => {
+  return {
+    type: "SELECT_REST",
+    payload: rest,
+  };
 };
