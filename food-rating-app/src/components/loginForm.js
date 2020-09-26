@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { login } from "../api";
 
 const LoginForm = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("submitted");
+  const [state, setState] = useState({ email: "", password: "" });
+  const handleSubmit = async (e) => {
+    // e.preventdefault();
+    const response = await login(state);
+    console.log(response);
+  };
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setState({ ...state, [e.target.name]: value });
   };
   return (
     <div>
@@ -16,8 +23,9 @@ const LoginForm = () => {
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Username</Form.Label>
             <Form.Control
-              onChange=""
-              value=""
+              onChange={handleChange}
+              name="email"
+              value={state.email}
               autoFocus
               placeholder="Enter your username"
             />
@@ -25,8 +33,10 @@ const LoginForm = () => {
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Password</Form.Label>
             <Form.Control
-              onChange=""
-              value=""
+              onChange={handleChange}
+              name="password"
+              type="password"
+              value={state.password}
               placeholder="Enter your password"
             />
             <Form.Text className="text-muted">

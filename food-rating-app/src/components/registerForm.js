@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { register } from "../api/index";
+import { register } from "../api";
 
 const RegisterForm = () => {
   const [state, setState] = useState({ name: "", email: "", password: "" });
   const handleSubmit = async (e) => {
-    e.preventdefault();
-    await register(state);
+    const response = await register(state);
+    console.log(response);
   };
   const handleChange = (e) => {
     const { value } = e.target;
