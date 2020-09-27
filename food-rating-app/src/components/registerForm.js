@@ -7,8 +7,7 @@ import { register } from "../api";
 const RegisterForm = () => {
   const [state, setState] = useState({ name: "", email: "", password: "" });
   const handleSubmit = async (e) => {
-    const response = await register(state);
-    console.log(response);
+    await register(state);
   };
   const handleChange = (e) => {
     const { value } = e.target;
@@ -17,7 +16,6 @@ const RegisterForm = () => {
       [e.target.name]: value,
     });
   };
-  console.log(state);
   return (
     <div>
       <Container style={{ marginTop: "7rem" }}>

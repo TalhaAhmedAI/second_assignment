@@ -7,7 +7,7 @@ import { login } from "../api";
 const LoginForm = () => {
   const [state, setState] = useState({ email: "", password: "" });
   const handleSubmit = async (e) => {
-    // e.preventdefault();
+    e.preventDefault();
     const response = await login(state);
     console.log(response);
   };
@@ -20,7 +20,7 @@ const LoginForm = () => {
       <Container style={{ marginTop: "10rem" }}>
         <h1>Login</h1>
         <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group>
             <Form.Label>Username</Form.Label>
             <Form.Control
               onChange={handleChange}
@@ -30,7 +30,7 @@ const LoginForm = () => {
               placeholder="Enter your username"
             />
           </Form.Group>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group>
             <Form.Label>Password</Form.Label>
             <Form.Control
               onChange={handleChange}
