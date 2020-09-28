@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const port = process.env.PORT || 3001;
 require("./db");
 
@@ -35,9 +35,10 @@ app.post("/auth", async (req, res) => {
 
   let password = await User.findOne({ password: req.body.password });
   if (!password) return res.status(400).send("Invalid password");
-  else {
-    res.send("success");
-  }
+
+  jwt.sign({ user }, "secret_key", (err, token) => {
+    err ? console.log(error) : res.json({ token });
+  });
 });
 
 app.listen(port, () => {
