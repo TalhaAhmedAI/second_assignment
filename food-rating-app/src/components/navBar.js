@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
-const NavBar = ({ location }) => {
+const NavBar = ({ location, user }) => {
+  console.log(user);
   return (
     <Navbar bg="primary" variant="dark">
       <Navbar.Brand href="/">Foodie</Navbar.Brand>
@@ -11,8 +12,12 @@ const NavBar = ({ location }) => {
         <Nav.Link href="/">Home</Nav.Link>
         <Nav.Link href="/contact">Contact Us</Nav.Link>
         <Nav.Link href="/terms">Terms & Conditions</Nav.Link>
-        <Nav.Link href="/login">Login</Nav.Link>
-        <Nav.Link href="/register">Register</Nav.Link>
+        {!Object.keys(user) && (
+          <React.Fragment>
+            <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link href="/register">Register</Nav.Link>
+          </React.Fragment>
+        )}
       </Nav>
       <Nav className="navbar-right" style={{ color: "white" }}>
         {location}

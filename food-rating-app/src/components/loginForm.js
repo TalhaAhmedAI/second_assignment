@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Joi from "joi-browser";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -8,6 +9,7 @@ import { login } from "../api";
 const LoginForm = () => {
   const [input, setInput] = useState({ email: "", password: "" });
   const [warnings, setWarnings] = useState({});
+  const navigate = useNavigate();
 
   const joiSchema = {
     email: Joi.string().required().label("Email"),
@@ -35,8 +37,10 @@ const LoginForm = () => {
     const errors = validate();
     setWarnings({ ...warnings, ...errors });
     if (errors) return;
-    // const { data: jwt } = await login(state);
-    // console.log(jwt);
+    console.log(input);
+    const jwt = await login(input);
+    localStorage.setItem("token", jwt.data);
+    navigate("/");
   };
   const handleChange = ({ currentTarget: field }) => {
     const errors = {};
@@ -48,7 +52,6 @@ const LoginForm = () => {
     setInput({ ...input, [name]: value });
     setWarnings({ ...warnings, ...errors });
   };
-  console.log(warnings);
   return (
     <div>
       <Container style={{ marginTop: "10rem" }}>
@@ -83,7 +86,7 @@ const LoginForm = () => {
               Note: We'll never share your details with anyone else.
             </Form.Text>
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button disabled={validate()} variant="primary" type="submit">
             Login
           </Button>
         </Form>

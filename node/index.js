@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const bodyparser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const port = process.env.PORT || 3001;
 require("./db");
@@ -9,7 +10,7 @@ require("./db");
 const User = mongoose.model("User");
 
 app.use(cors());
-app.use(express.json());
+app.use(bodyparser.json());
 
 const createUser = (req, res) => {
   const user = new User();
@@ -37,7 +38,7 @@ app.post("/auth", async (req, res) => {
   if (!password) return res.status(400).send("Invalid password");
 
   jwt.sign({ user }, "secret_key", (err, token) => {
-    err ? console.log(error) : res.json({ token });
+    res.json(token);
   });
 });
 

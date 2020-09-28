@@ -95,7 +95,7 @@ const RegisterForm = () => {
               Note: We'll never share your details with anyone else.
             </Form.Text>
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button disabled={validate()} variant="primary" type="submit">
             Submit
           </Button>
         </Form>
