@@ -4,12 +4,14 @@ import NavBar from "./components/navBar";
 import Routing from "./routing";
 
 function App() {
-  const [state, setState] = useState({ user: "" });
+  const [state, setState] = useState({});
   useEffect(() => {
     try {
-      const jwt = localStorage.getItem("token");
-      const user = jwtDecode(jwt);
-      setState({ user });
+      if (localStorage.length) {
+        const jwt = localStorage.getItem("token");
+        const user = jwtDecode(jwt);
+        setState({ user });
+      }
     } catch (error) {}
   }, []);
   console.log(state.user);

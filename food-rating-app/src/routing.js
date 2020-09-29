@@ -5,6 +5,7 @@ import Terms from "./pages/terms";
 import Home from "./pages/home";
 import OverView from "./pages/overView";
 import LoginForm from "./components/loginForm";
+import Logout from "./components/logout";
 import RegisterForm from "./components/registerForm";
 
 const Routing = () => {
@@ -16,6 +17,7 @@ const Routing = () => {
         <Route path="/terms" element={<Terms />} />
         <Route path="/overview/:id" element={<OverView />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterForm />} />
       </Routes>
     </Router>

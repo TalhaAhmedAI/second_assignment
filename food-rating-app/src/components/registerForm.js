@@ -36,6 +36,8 @@ const RegisterForm = () => {
     const errors = validate();
     setWarnings({ ...warnings, ...errors });
     if (errors) return;
+    await register(input);
+    window.location = "/login";
   };
 
   const handleChange = ({ currentTarget: field }) => {

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Joi from "joi-browser";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -9,7 +8,6 @@ import { login } from "../api";
 const LoginForm = () => {
   const [input, setInput] = useState({ email: "", password: "" });
   const [warnings, setWarnings] = useState({});
-  const navigate = useNavigate();
 
   const joiSchema = {
     email: Joi.string().required().label("Email"),
@@ -40,7 +38,7 @@ const LoginForm = () => {
     console.log(input);
     const jwt = await login(input);
     localStorage.setItem("token", jwt.data);
-    navigate("/");
+    window.location = "/";
   };
   const handleChange = ({ currentTarget: field }) => {
     const errors = {};

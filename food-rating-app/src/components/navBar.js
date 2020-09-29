@@ -12,10 +12,16 @@ const NavBar = ({ location, user }) => {
         <Nav.Link href="/">Home</Nav.Link>
         <Nav.Link href="/contact">Contact Us</Nav.Link>
         <Nav.Link href="/terms">Terms & Conditions</Nav.Link>
-        {!Object.keys(user) && (
+        {!user && (
           <React.Fragment>
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/register">Register</Nav.Link>
+          </React.Fragment>
+        )}
+        {user && (
+          <React.Fragment>
+            <Nav.Link>{user.user.name}</Nav.Link>
+            <Nav.Link href="/logout">Logout</Nav.Link>
           </React.Fragment>
         )}
       </Nav>
