@@ -30,6 +30,16 @@ app.post("/users", async (req, res) => {
   res.send("User has been registered");
 });
 
+app.get("/users", async (req, res) => {
+  await User.find((err, docs) => {
+    if (!err) {
+      res.status(200).send(docs);
+    } else {
+      console.log(`Error in retrieving user list ${err}`);
+    }
+  });
+});
+
 app.post("/auth", async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
   if (!user) return res.status(400).send("Invalid email");

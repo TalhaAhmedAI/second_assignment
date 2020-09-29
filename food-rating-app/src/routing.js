@@ -7,6 +7,7 @@ import OverView from "./pages/overView";
 import LoginForm from "./components/loginForm";
 import Logout from "./components/logout";
 import RegisterForm from "./components/registerForm";
+import AdminPanel from "./components/admin";
 
 const Routing = () => {
   return (
@@ -19,6 +20,7 @@ const Routing = () => {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/admin" element={<AdminPanel />} />
       </Routes>
     </Router>
   );

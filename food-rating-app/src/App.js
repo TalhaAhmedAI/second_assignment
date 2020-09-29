@@ -14,7 +14,6 @@ function App() {
       }
     } catch (error) {}
   }, []);
-  console.log(state.user);
   return (
     <div>
       <NavBar user={state.user} />

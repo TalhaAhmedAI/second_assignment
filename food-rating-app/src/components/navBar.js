@@ -4,7 +4,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
 const NavBar = ({ location, user }) => {
-  console.log(user);
   return (
     <Navbar bg="primary" variant="dark">
       <Navbar.Brand href="/">Foodie</Navbar.Brand>
