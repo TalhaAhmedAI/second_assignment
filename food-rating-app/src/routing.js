@@ -7,7 +7,7 @@ import OverView from "./pages/overView";
 import LoginForm from "./components/loginForm";
 import Logout from "./components/logout";
 import RegisterForm from "./components/registerForm";
-import AdminPanel from "./components/admin";
+import AdminPanel from "./pages/admin";
 
 const Routing = () => {
   return (
