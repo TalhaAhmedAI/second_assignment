@@ -18,18 +18,14 @@ const AdminPanel = () => {
   // console.log(users);
   const users = [{ name: "Talha" }, { name: "Ali" }];
   return (
-    <Container
-      // style={{ paddingTop: "2rem" }}
-      className="d-flex justify-content-around"
-    >
-      <Row className="border border-primary">
-        <Col className={cn("text-center", "border border-primary")} spacing={3}>
-          {" "}
+    <Container className="pt-5">
+      <Row className="d-flex justify-content-around">
+        <Col className="border border-primary col mx-5">
           {users.map((user) => (
-            <Row>{user.name}</Row>
+            <Row className="py-2 px-2">{user.name}</Row>
           ))}
         </Col>
-        <Col>
+        <Col className="border border-primary vh-50 mx-5">
           <h1>
             list list list list list list list list list list list list list
           </h1>
