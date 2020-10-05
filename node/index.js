@@ -52,6 +52,14 @@ app.post("/auth", async (req, res) => {
   });
 });
 
+app.delete("/users/:id", async (req, res) => {
+  try {
+    const user = await User.findByIdAndRemove({ _id: req.params.id });
+  } catch (error) {
+    res.send(error);
+  }
+});
+
 app.listen(port, () => {
   console.log(`Listening to port ${port}`);
 });

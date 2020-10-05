@@ -22,3 +22,9 @@ export const getUsers = () => {
   const response = axios.get(apiEndpoint);
   return response;
 };
+
+export const deleteUser = (id) => {
+  const apiEndpoint = url + `/users/${id}`;
+  const response = axios.delete(apiEndpoint);
+  return response;
+};
