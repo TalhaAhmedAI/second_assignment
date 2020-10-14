@@ -8,8 +8,16 @@ export const submitLocation = (location) => {
   };
 };
 
+export const getUser = () => async (dispatch) => {
+  const apiEndpoint = url + 'users/:id'
+  const response = await axios.get(apiEndpoint)
+
+  dispatch({type: 'GET_USER', payload: response})
+}
+
 export const fetchRests = () => async (dispatch) => {
-  const response = await axios.get(url);
+  const apiEndpoint = url
+  const response = await axios.get(apiEndpoint);
 
   dispatch({ type: "FETCH_RESTS", payload: response });
 };

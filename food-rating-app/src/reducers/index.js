@@ -25,4 +25,5 @@ export default combineReducers({
   location: submitLocationReducer,
   rests: fetchRestsReducer,
   rest: selectRestReducer,
+  // user: getUser
 });
