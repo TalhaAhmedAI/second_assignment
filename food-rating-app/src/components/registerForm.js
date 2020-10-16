@@ -50,13 +50,12 @@ const RegisterForm = () => {
     setInput({ ...input, [name]: value });
     setWarnings({ ...warnings, ...errors });
   };
-  console.log(warnings);
   return (
     <div>
       <Container style={{ marginTop: "7rem" }}>
         <h1>Register</h1>
         <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group>
             <Form.Label>Name</Form.Label>
             <Form.Control
               onChange={handleChange}
@@ -69,7 +68,7 @@ const RegisterForm = () => {
               <div className="alert alert-danger">{warnings.name}</div>
             )}
           </Form.Group>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group>
             <Form.Label>Email</Form.Label>
             <Form.Control
               onChange={handleChange}
@@ -81,7 +80,7 @@ const RegisterForm = () => {
               <div className="alert alert-danger">{warnings.email}</div>
             )}
           </Form.Group>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group>
             <Form.Label>Password</Form.Label>
             <Form.Control
               onChange={handleChange}

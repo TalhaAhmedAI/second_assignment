@@ -15,10 +15,14 @@ const AdminPanel = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  const onEdit = async (id) => {
+    window.location = `/edit/${id}`
+  }
   const onDelete = async (id) => {
     const response = await deleteUser(id);
     console.log(response);
-    // window.location = "/admin";
+    window.location = "/admin";
   };
   return (
     <Container className="pt-5">
@@ -32,12 +36,10 @@ const AdminPanel = () => {
             >
               {user.name}
               <div className="btn-group ml-auto">
-                <a href="#">
-                  <button className="btn btn-primary btn-sm  mx-2">Edit</button>
-                </a>
+                  <button className="btn btn-primary btn-sm  mx-2" onClick={() => onEdit(user._id)}>Edit</button>
                 <button
                   className="btn btn-danger btn-sm"
-                  onClick={() => onDelete("dfjdfjdfjdhf")}
+                  onClick={() => onDelete(user._id)}
                 >
                   Delete
                 </button>

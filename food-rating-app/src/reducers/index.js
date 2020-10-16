@@ -21,9 +21,16 @@ const selectRestReducer = (rest = null, action) => {
   return rest;
 };
 
+const getUserReducer = (user = null, action) => {
+  if (action.type === 'GET_USER') {
+    return action.payload
+  }
+  return user
+}
+
 export default combineReducers({
   location: submitLocationReducer,
   rests: fetchRestsReducer,
   rest: selectRestReducer,
-  // user: getUser
+  user: getUserReducer
 });

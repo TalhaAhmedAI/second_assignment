@@ -23,8 +23,22 @@ export const getUsers = () => {
   return response;
 };
 
+export const getUser = (id) => {
+  const apiEndpoint = url + `/users/${id}`
+  const response = axios.get(apiEndpoint)
+  return response
+}
+
+export const updateUser = (id, data) => {
+  const apiEndpoint = url + `/users/${id}`
+  const response = axios.put(apiEndpoint, data)
+  return response
+}
+
 export const deleteUser = (id) => {
   const apiEndpoint = url + `/users/${id}`;
   const response = axios.delete(apiEndpoint);
   return response;
 };
+
+

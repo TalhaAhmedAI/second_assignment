@@ -21,7 +21,7 @@ const Routing = () => {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterForm />} />
-        <Route path="/edit" element={<EditForm />} />
+        <Route path="/edit/:id" element={<EditForm />} />
         <Route path="/admin" element={<AdminPanel />} />
       </Routes>
     </Router>

@@ -1,13 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import {useParams} from 'react-router-dom'
 import Joi from "joi-browser";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+import {getUser, updateUser} from '../api'
+
 
 const EditForm = () => {
     const [input, setInput] = useState({ name: "", email: "", password: "" });
     const [warnings, setWarnings] = useState({});
+    const {id} = useParams()  
+
+    useEffect(() => {
+      const getData = async () => {
+        const result = await getUser(id);
+        const {data} = result
+        setInput({name: data.name, email: data.email, password: data.password})
+        
+      };
+      getData()
+    }, [id])
+
   
     const joiSchema = {
       name: Joi.string().required().label("Name"),
@@ -36,8 +51,10 @@ const EditForm = () => {
       const errors = validate();
       setWarnings({ ...warnings, ...errors });
       if (errors) return;
-    //   await register(input);
-      window.location = "/login";
+      const response = await updateUser(id, input)
+      console.log(input)
+      console.log(response)
+
     };
   
     const handleChange = ({ currentTarget: field }) => {
@@ -50,13 +67,12 @@ const EditForm = () => {
       setInput({ ...input, [name]: value });
       setWarnings({ ...warnings, ...errors });
     };
-    console.log(warnings);
     return (
       <div>
         <Container style={{ marginTop: "7rem" }}>
           <h1>Edit</h1>
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group>
               <Form.Label>Name</Form.Label>
               <Form.Control
                 onChange={handleChange}
@@ -69,7 +85,7 @@ const EditForm = () => {
                 <div className="alert alert-danger">{warnings.name}</div>
               )}
             </Form.Group>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group>
               <Form.Label>Email</Form.Label>
               <Form.Control
                 onChange={handleChange}
@@ -81,7 +97,7 @@ const EditForm = () => {
                 <div className="alert alert-danger">{warnings.email}</div>
               )}
             </Form.Group>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group>
               <Form.Label>Password</Form.Label>
               <Form.Control
                 onChange={handleChange}

@@ -40,6 +40,16 @@ app.get("/users", async (req, res) => {
   });
 });
 
+app.get("/users/:id", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id)
+    res.send(user)
+  }
+  catch (err) {
+    res.send(err)
+  }
+})
+
 app.post("/auth", async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
   if (!user) return res.status(400).send("Invalid email");
@@ -51,6 +61,18 @@ app.post("/auth", async (req, res) => {
     res.json(token);
   });
 });
+
+app.put('/users/:id', async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(req.params.id, {name: req.body.name,
+      email: req.body.email,
+      password: req.body.password})
+      res.send(user)
+  }
+  catch (error) {
+    res.send(error)
+  }
+})
 
 app.delete("/users/:id", async (req, res) => {
   try {

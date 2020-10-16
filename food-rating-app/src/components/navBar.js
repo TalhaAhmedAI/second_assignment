@@ -11,6 +11,7 @@ const NavBar = ({ location, user }) => {
         <Nav.Link href="/">Home</Nav.Link>
         <Nav.Link href="/contact">Contact Us</Nav.Link>
         <Nav.Link href="/terms">Terms & Conditions</Nav.Link>
+        <Nav.Link href="/admin">Admin</Nav.Link>
         {!user && (
           <React.Fragment>
             <Nav.Link href="/login">Login</Nav.Link>
