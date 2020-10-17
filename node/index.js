@@ -77,6 +77,7 @@ app.put('/users/:id', async (req, res) => {
 app.delete("/users/:id", async (req, res) => {
   try {
     const user = await User.findByIdAndRemove({ _id: req.params.id });
+    res.status(200).send(user)
   } catch (error) {
     res.send(error);
   }

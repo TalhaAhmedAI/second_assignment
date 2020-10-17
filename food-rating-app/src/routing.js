@@ -10,7 +10,7 @@ import RegisterForm from "./components/registerForm";
 import EditForm from './components/editForm';
 import AdminPanel from "./pages/admin";
 
-const Routing = () => {
+const Routing = ({user}) => {
   return (
     <Router>
       <Routes>
@@ -22,7 +22,7 @@ const Routing = () => {
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/edit/:id" element={<EditForm />} />
-        <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/admin" element={ user && user.name === "Admin" ? <AdminPanel /> : <LoginForm />} />
       </Routes>
     </Router>
   );

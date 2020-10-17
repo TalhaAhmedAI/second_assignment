@@ -11,7 +11,6 @@ const NavBar = ({ location, user }) => {
         <Nav.Link href="/">Home</Nav.Link>
         <Nav.Link href="/contact">Contact Us</Nav.Link>
         <Nav.Link href="/terms">Terms & Conditions</Nav.Link>
-        <Nav.Link href="/admin">Admin</Nav.Link>
         {!user && (
           <React.Fragment>
             <Nav.Link href="/login">Login</Nav.Link>
@@ -20,8 +19,9 @@ const NavBar = ({ location, user }) => {
         )}
         {user && (
           <React.Fragment>
-            <Nav.Link>{user.user.name}</Nav.Link>
+            <Nav.Link>{user.name}</Nav.Link>
             <Nav.Link href="/logout">Logout</Nav.Link>
+            {user.name === 'Admin' && <Nav.Link href="/admin">Admin Page</Nav.Link>} 
           </React.Fragment>
         )}
       </Nav>

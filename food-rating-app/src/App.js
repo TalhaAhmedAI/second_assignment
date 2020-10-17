@@ -4,20 +4,20 @@ import NavBar from "./components/navBar";
 import Routing from "./routing";
 
 function App() {
-  const [state, setState] = useState({});
+  const [state, setState] = useState();
   useEffect(() => {
     try {
       if (localStorage.length) {
         const jwt = localStorage.getItem("token");
-        const user = jwtDecode(jwt);
-        setState({ user });
+        const {user} = jwtDecode(jwt);
+        setState(user);
       }
     } catch (error) {}
   }, []);
   return (
     <div>
-      <NavBar user={state.user} />
-      <Routing />
+      <NavBar user={state} />
+      <Routing user={state}/>
     </div>
   );
 }

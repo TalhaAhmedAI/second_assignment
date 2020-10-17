@@ -51,9 +51,8 @@ const EditForm = () => {
       const errors = validate();
       setWarnings({ ...warnings, ...errors });
       if (errors) return;
-      const response = await updateUser(id, input)
-      console.log(input)
-      console.log(response)
+      await updateUser(id, input)
+      window.location = "/admin"
 
     };
   

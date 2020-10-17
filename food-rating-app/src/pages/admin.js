@@ -20,9 +20,8 @@ const AdminPanel = () => {
     window.location = `/edit/${id}`
   }
   const onDelete = async (id) => {
-    const response = await deleteUser(id);
-    console.log(response);
-    window.location = "/admin";
+    await deleteUser(id);
+    window.location.reload()
   };
   return (
     <Container className="pt-5">
