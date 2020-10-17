@@ -9,6 +9,7 @@ import Logout from "./components/logout";
 import RegisterForm from "./components/registerForm";
 import EditForm from './components/editForm';
 import AdminPanel from "./pages/admin";
+import RestaurantForm from "./pages/restaurantForm";
 
 const Routing = ({user}) => {
   return (
@@ -22,6 +23,7 @@ const Routing = ({user}) => {
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/edit/:id" element={<EditForm />} />
+        <Route path="/add" element={<RestaurantForm />} />
         <Route path="/admin" element={ user && user.name === "Admin" ? <AdminPanel /> : <LoginForm />} />
       </Routes>
     </Router>
