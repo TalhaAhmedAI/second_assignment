@@ -2,7 +2,7 @@ import axios from "axios";
 
 const url = "http://localhost:3001";
 
-export const register = ({ name, email, password }) => {
+export const registerUser = ({ name, email, password }) => {
   const apiEndpoint = url + "/users";
   axios.post(apiEndpoint, {
     name,

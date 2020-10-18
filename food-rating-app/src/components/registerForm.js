@@ -3,7 +3,7 @@ import Joi from "joi-browser";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { register } from "../api";
+import { registerUser } from "../api/users";
 
 const RegisterForm = () => {
   const [input, setInput] = useState({ name: "", email: "", password: "" });
@@ -36,7 +36,7 @@ const RegisterForm = () => {
     const errors = validate();
     setWarnings({ ...warnings, ...errors });
     if (errors) return;
-    await register(input);
+    await registerUser(input);
     window.location = "/login";
   };
 

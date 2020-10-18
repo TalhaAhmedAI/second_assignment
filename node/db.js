@@ -14,3 +14,4 @@ mongoose.connect(
 );
 
 require("./models/userModel");
+require('./models/restaurantModel')

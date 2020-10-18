@@ -3,8 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { getUsers } from "../api/index";
-import { deleteUser } from "../api/index";
+import { getUsers, deleteUser } from "../api/users";
 
 const AdminPanel = () => {
   const [users, setUsers] = useState([]);

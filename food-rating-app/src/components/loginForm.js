@@ -3,7 +3,7 @@ import Joi from "joi-browser";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { login } from "../api";
+import { login } from "../api/users";
 
 const LoginForm = () => {
   const [input, setInput] = useState({ email: "", password: "" });

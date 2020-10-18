@@ -5,16 +5,18 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { register } from "../api";
+import { registerRestaurant } from '../api/restaurants';
 
 const RestaurantForm = () => {
-    const [input, setInput] = useState({ name: "", email: "", password: "" });
+    const [input, setInput] = useState({ name: "", dish_1: "", dish_2: "", dish_3: "", dish_4: "" });
   const [warnings, setWarnings] = useState({});
 
   const joiSchema = {
     name: Joi.string().required().label("Name"),
-    email: Joi.string().required().label("Email"),
-    password: Joi.string().required().label("Password"),
+    dish_1: Joi.string().required().label("dish 1"),
+    dish_2: Joi.string().required().label("dish 2"),
+    dish_3: Joi.string().required().label("dish 3"),
+    dish_4: Joi.string().required().label("dish 4"),
   };
 
   const validate = () => {
@@ -38,8 +40,8 @@ const RestaurantForm = () => {
     const errors = validate();
     setWarnings({ ...warnings, ...errors });
     if (errors) return;
-    await register(input);
-    window.location = "/login";
+    const response = await registerRestaurant(input);
+    console.log(response)
   };
 
   const handleChange = ({ currentTarget: field }) => {
@@ -73,31 +75,37 @@ const RestaurantForm = () => {
           <Row>
               <Col>
               <Form.Label>First dish</Form.Label>
-              <Form.Control placeholder="first dish"/>
+              <Form.Control onChange={handleChange} name="dish_1" value={input.dish_1} placeholder="First dish"/>
+              {warnings.dish_1 && (
+              <div className="alert alert-danger">{warnings.dish_1}</div>
+            )}
               </Col>
               <Col>
               <Form.Label>Second dish</Form.Label>
-              <Form.Control placeholder="second dish"/>
+              <Form.Control onChange={handleChange} name="dish_2" value={input.dish_2} placeholder="Second dish"/>
+              {warnings.dish_2 && (
+              <div className="alert alert-danger">{warnings.dish_2}</div>
+            )}
               </Col>
           </Row>
-          <Form.Group>
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              onChange={handleChange}
-              name="password"
-              type="password"
-              value={input.password}
-              placeholder="Enter your password..."
-            />
-            {warnings.password && (
-              <div className="alert alert-danger">{warnings.password}</div>
+          <Row className="my-2">
+              <Col>
+              <Form.Label>Third dish</Form.Label>
+              <Form.Control onChange={handleChange} name="dish_3" value={input.dish_3} placeholder="Third dish"/>
+              {warnings.dish_3 && (
+              <div className="alert alert-danger">{warnings.dish_3}</div>
             )}
-            <Form.Text className="text-muted">
-              Note: We'll never share your details with anyone else.
-            </Form.Text>
-          </Form.Group>
-          <Button disabled={validate()} variant="primary" type="submit">
-            Submit
+              </Col>
+              <Col>
+              <Form.Label>Fourth dish</Form.Label>
+              <Form.Control onChange={handleChange} name="dish_4" value={input.dish_4} placeholder="Fourth dish"/>
+              {warnings.dish_4 && (
+              <div className="alert alert-danger">{warnings.dish_4}</div>
+            )}
+              </Col>
+          </Row>
+          <Button className="my-2" disabled={validate()} variant="primary" type="submit">
+            Register
           </Button>
         </Form>
       </Container>

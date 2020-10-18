@@ -19,13 +19,12 @@ const LocationForm = (props) => {
   return (
     <Container style={{ marginTop: "15rem" }}>
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formBasicEmail">
+        <Form.Group>
           <Form.Label>Location</Form.Label>
           <Form.Control
             onChange={(e) => handleChange(e.target.value)}
             value={formValue}
             autoFocus
-            autoComplete="off"
             placeholder="Please enter your location"
           />
           <Form.Text className="text-muted">
