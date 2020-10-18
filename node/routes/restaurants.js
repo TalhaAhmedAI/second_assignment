@@ -9,10 +9,10 @@ const Restaurant = mongoose.model("Restaurant");
 const registerRestaurant = (req, res) => {
     const restaurant = new Restaurant();
     restaurant.name = req.body.name;
-    restaurant.dish_1 = req.body.dish_1;
-    restaurant.dish_2 = req.body.dish_2;
-    restaurant.dish_3 = req.body.dish_3;
-    restaurant.dish_4 = req.body.dish_4;
+    restaurant.item_1 = {name: req.body.item_1, rating: ""};
+    restaurant.item_2 = {name: req.body.item_2, rating: ""};
+    restaurant.item_3 = {name: req.body.item_3, rating: ""};
+    restaurant.item_4 = {name: req.body.item_4, rating: ""}
     restaurant.save((err, doc) => {
       if (!err) return;
       else console.log(`Error during restaurant registration ${err}`);

@@ -22,7 +22,10 @@ const NavBar = ({ location, user }) => {
             <Nav.Link>{user.name}</Nav.Link>
             <Nav.Link href="/logout">Logout</Nav.Link>
             <Nav.Link href="/add">Add Restaurant</Nav.Link>
-            {user.name === 'Admin' && <Nav.Link href="/admin">Admin Page</Nav.Link>} 
+            {user.name === 'Admin' && (<React.Fragment>
+            <Nav.Link href="/admin">Admin Page</Nav.Link>
+            <Nav.Link href="/register">Register User</Nav.Link>
+            </React.Fragment>)} 
           </React.Fragment>
         )}
       </Nav>

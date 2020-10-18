@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 
 const restaurantSchema = new mongoose.Schema({
   name: String,
-  dish_1: String,
-  dish_2: String,
-  dish_3: String,
-  dish_4: String,
+  item_1: Object,
+  item_2: Object,
+  item_3: Object,
+  item_4: Object,
 });
 
 mongoose.model("Restaurant", restaurantSchema);

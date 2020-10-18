@@ -8,15 +8,15 @@ import Col from 'react-bootstrap/Col'
 import { registerRestaurant } from '../api/restaurants';
 
 const RestaurantForm = () => {
-    const [input, setInput] = useState({ name: "", dish_1: "", dish_2: "", dish_3: "", dish_4: "" });
+    const [input, setInput] = useState({ name: "", item_1: "", item_2: "", item_3: "", item_4: "" });
   const [warnings, setWarnings] = useState({});
 
   const joiSchema = {
     name: Joi.string().required().label("Name"),
-    dish_1: Joi.string().required().label("dish 1"),
-    dish_2: Joi.string().required().label("dish 2"),
-    dish_3: Joi.string().required().label("dish 3"),
-    dish_4: Joi.string().required().label("dish 4"),
+    item_1: Joi.string().required().label("item 1"),
+    item_2: Joi.string().required().label("item 2"),
+    item_3: Joi.string().required().label("item 3"),
+    item_4: Joi.string().required().label("item 4"),
   };
 
   const validate = () => {
@@ -74,33 +74,33 @@ const RestaurantForm = () => {
           </Form.Group>
           <Row>
               <Col>
-              <Form.Label>First dish</Form.Label>
-              <Form.Control onChange={handleChange} name="dish_1" value={input.dish_1} placeholder="First dish"/>
-              {warnings.dish_1 && (
-              <div className="alert alert-danger">{warnings.dish_1}</div>
+              <Form.Label>First item</Form.Label>
+              <Form.Control onChange={handleChange} name="item_1" value={input.item_1} placeholder="First item"/>
+              {warnings.item_1 && (
+              <div className="alert alert-danger">{warnings.item_1}</div>
             )}
               </Col>
               <Col>
-              <Form.Label>Second dish</Form.Label>
-              <Form.Control onChange={handleChange} name="dish_2" value={input.dish_2} placeholder="Second dish"/>
-              {warnings.dish_2 && (
-              <div className="alert alert-danger">{warnings.dish_2}</div>
+              <Form.Label>Second item</Form.Label>
+              <Form.Control onChange={handleChange} name="item_2" value={input.item_2} placeholder="Second item"/>
+              {warnings.item_2 && (
+              <div className="alert alert-danger">{warnings.item_2}</div>
             )}
               </Col>
           </Row>
           <Row className="my-2">
               <Col>
-              <Form.Label>Third dish</Form.Label>
-              <Form.Control onChange={handleChange} name="dish_3" value={input.dish_3} placeholder="Third dish"/>
-              {warnings.dish_3 && (
-              <div className="alert alert-danger">{warnings.dish_3}</div>
+              <Form.Label>Third item</Form.Label>
+              <Form.Control onChange={handleChange} name="item_3" value={input.item_3} placeholder="Third item"/>
+              {warnings.item_3 && (
+              <div className="alert alert-danger">{warnings.item_3}</div>
             )}
               </Col>
               <Col>
-              <Form.Label>Fourth dish</Form.Label>
-              <Form.Control onChange={handleChange} name="dish_4" value={input.dish_4} placeholder="Fourth dish"/>
-              {warnings.dish_4 && (
-              <div className="alert alert-danger">{warnings.dish_4}</div>
+              <Form.Label>Fourth item</Form.Label>
+              <Form.Control onChange={handleChange} name="item_4" value={input.item_4} placeholder="Fourth item"/>
+              {warnings.item_4 && (
+              <div className="alert alert-danger">{warnings.item_4}</div>
             )}
               </Col>
           </Row>
