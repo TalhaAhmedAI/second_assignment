@@ -4,23 +4,38 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import { getUsers, deleteUser } from "../api/users";
+import { getRestaurants, deleteRestaurant } from "../api/restaurants";
 
 const AdminPanel = () => {
   const [users, setUsers] = useState([]);
+  const [restaurants, setRestaurants] = useState([])
   const getData = async () => {
     const result = await getUsers();
     setUsers(result.data);
+    const response = await getRestaurants()
+    setRestaurants(response.data)
   };
   useEffect(() => {
     getData();
-  }, []);
+  },[]);
+  
 
-  const onEdit = async (id) => {
+  const userEdit = async (id) => {
     window.location = `/edit/${id}`
   }
-  const onDelete = async (id) => {
+  const userDelete = async (id) => {
     await deleteUser(id);
     window.location.reload()
+  };
+
+  const restaurantEdit = async (id) => {
+    window.location = `/edit/${id}`
+  }
+  const restaurantDelete = async (id) => {
+    const response = await deleteRestaurant(id);
+    console.log(response)
+    
+    // window.location.reload()
   };
   return (
     <Container className="pt-5">
@@ -34,10 +49,10 @@ const AdminPanel = () => {
             >
               {user.name}
               <div className="btn-group ml-auto">
-                  <button className="btn btn-primary btn-sm  mx-2" onClick={() => onEdit(user._id)}>Edit</button>
+                  <button className="btn btn-primary btn-sm  mx-2" onClick={() => userEdit(user._id)}>Edit</button>
                 <button
                   className="btn btn-danger btn-sm"
-                  onClick={() => onDelete(user._id)}
+                  onClick={() => userDelete(user._id)}
                 >
                   Delete
                 </button>
@@ -46,18 +61,18 @@ const AdminPanel = () => {
           ))}
         </Col>
         <Col className="shadow-lg bg-white rounded mx-5">
-          {users.map((user, id) => (
+          {restaurants.map((restaurant, id) => (
             <Row
               className="shadow my-3 mx-2 py-2 px-2 rounded font-weight-bold"
               style={{ height: "7vh" }}
               key={id}
             >
-              {user.name}
+              {restaurant.name}
               <div className="btn-group ml-auto">
-                  <button className="btn btn-primary btn-sm  mx-2" onClick={() => onEdit(user._id)}>Edit</button>
+                  <button className="btn btn-primary btn-sm  mx-2" onClick={() => restaurantEdit(restaurant._id)}>Edit</button>
                 <button
                   className="btn btn-danger btn-sm"
-                  onClick={() => onDelete(user._id)}
+                  onClick={() => restaurantDelete(restaurant._id)}
                 >
                   Delete
                 </button>

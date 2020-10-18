@@ -30,7 +30,7 @@ router.post("/users", async (req, res) => {
       if (!err) {
         res.status(200).send(docs);
       } else {
-        console.log(`Error in retrieving user list ${err}`);
+        res.send(err);
       }
     });
   });
