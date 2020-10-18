@@ -46,10 +46,25 @@ const AdminPanel = () => {
           ))}
         </Col>
         <Col className="shadow-lg bg-white rounded mx-5">
-          <h1>
-            list list list list list list list list list list list list list
-          </h1>
-        </Col>
+          {users.map((user, id) => (
+            <Row
+              className="shadow my-3 mx-2 py-2 px-2 rounded font-weight-bold"
+              style={{ height: "7vh" }}
+              key={id}
+            >
+              {user.name}
+              <div className="btn-group ml-auto">
+                  <button className="btn btn-primary btn-sm  mx-2" onClick={() => onEdit(user._id)}>Edit</button>
+                <button
+                  className="btn btn-danger btn-sm"
+                  onClick={() => onDelete(user._id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </Row>
+            ))}
+          </Col>
       </Row>
     </Container>
   );
